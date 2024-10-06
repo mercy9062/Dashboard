@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Visualization App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Include Bootstrap CSS for alert styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Visualization App</h1>
+        <form id="upload-form" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" accept=".csv, .xlsx" required>
+            <button type="submit" id="upload-button" class="btn btn-primary">Upload</button>
+        </form>
+        <div id="progress-container" style="display: none;">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <span id="progress-text">0%</span>
+        </div>
+        <div id="message"></div>
+        <div id="buttons" style="display: none;">
+            <button onclick="generateBarChart()" class="btn btn-primary">Bar Chart</button>
+            <button onclick="generatePieChart()" class="btn btn-primary">Pie Chart</button>
+            <button onclick="generateLineChart()" class="btn btn-primary">Line Graph</button>
+            <button onclick="clearChart()" class="btn btn-danger">Clear</button>
+            <button onclick="downloadReport()" class="btn btn-success">Download Report</button>
+        </div>
+        <div id="chart-container">
+            <canvas id="chart" width="800" height="400"></canvas>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS and dependencies (optional for better UI) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
